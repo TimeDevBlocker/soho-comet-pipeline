@@ -1,5 +1,5 @@
 # soho-comet-pipeline
-Automated SOHO LASCO C2 and C3 comet search
+Automated SOHO LASCO C2 comet search
 
 ***
 <br/>
