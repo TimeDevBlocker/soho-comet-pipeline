@@ -10,17 +10,17 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
 
-from_name = 'Comet_Bot'  # 邮件发送者名称
-to_name = 'Z. Chen'  # 邮件接收者名称
-from_addr = 'time34@163.com'  # 发送邮箱
-password = 'MBTJNFOIKZPVGILK'  # POP3/SMTP服务授权码
-to_addr = '1583797321@qq.com'  # 接收邮箱
-smtp_server = 'smtp.163.com'  # 邮箱服务器：默认qq邮箱
+from_name = 'name'  # 邮件发送者名称
+to_name = 'name'  # 邮件接收者名称
+from_addr = 'xxx@xxx.com'  # 发送邮箱
+password = 'pwd'  # POP3/SMTP服务授权码
+to_addr = 'xxx@xxx.com'  # 接收邮箱
+smtp_server = 'stmp server link'  # 邮箱服务器：默认qq邮箱
 port_num = 465  # 邮箱服务器端口号：默认qq邮箱
-subject = 'Candidate Discovered!'  # 邮件主题
+subject = ''  # 邮件主题
 # 邮件正文
 html_msg = """
-    <p>Candidate Found!</p>
+    <p></p>
     """
 
 def create_interest_region(answer_txt_path, input_process_path, output_path):
