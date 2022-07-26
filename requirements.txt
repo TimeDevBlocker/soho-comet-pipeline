@@ -1,0 +1,11 @@
+astropy==4.3.1
+matplotlib==3.4.3
+numba==0.54.1
+numpy==1.20.3
+opencv_python==4.5.5.64
+Pillow==9.2.0
+scikit_image==0.18.3
+scipy==1.7.1
+skimage==0.0
+torch==1.11.0
+tqdm==4.62.3
