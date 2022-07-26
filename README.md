@@ -18,6 +18,9 @@ pip install -r requirements.txt
 python main.py
 ```
 
+Note:
+Images should be put in ./data folder, and main.py's line 132 - 134 should be changed.
+
 <br/>
 
 ## Credit
