@@ -19,7 +19,7 @@ python main.py
 ```
 
 Note:
-Images should be put in ./data folder, and main.py's line 132 - 134 should be changed.
+Images should be put in ./data folder, and change main.py's line 132 - 134 accordingly.
 
 <br/>
 
