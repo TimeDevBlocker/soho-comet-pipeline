@@ -1,6 +1,8 @@
 # soho-comet-pipeline
 Automated SOHO LASCO C2 comet search
 
+## Demo
+![image](https://s2.loli.net/2022/07/27/MxfN2zrgXQDEdIc.png)
 ***
 <br/>
 
