@@ -75,6 +75,9 @@ def med_subtract( indata, dst_path, dateinfo, kern_sz = 25 , annotate_words=True
 
     # Create images 
     for i in range( numfiles ):
+        outname = dst_path + dateinfo[i].strftime('%Y%m%d_%H%M_C2_medfilt.png')
+        if os.path.exists(outname):
+            continue
         print("Writing image %i of %i with median-subtraction" % (i+1,numfiles))
         medsub = indata[:,:,i] - medfilt2d(indata[:,:,i], kernel_size=kern) # Apply filter; see note above
         # The following commands just set up a figure with no borders, and writes the image to a png.
@@ -84,7 +87,6 @@ def med_subtract( indata, dst_path, dateinfo, kern_sz = 25 , annotate_words=True
         ax.imshow(np.fliplr(medsub), vmin=imgmin,vmax=imgmax,cmap='gray', interpolation='nearest',origin='lower')
         if annotate_words:
             ax.annotate(dateinfo[i].strftime('%Y/%m/%d %H:%M'), xy=(10,10), xytext=(320, 1010),color='cyan', size=30, ha='right')
-        outname= dst_path + dateinfo[i].strftime('%Y%m%d_%H%M_C2_medfilt.png')
         ax.set(xlim=[0, width], ylim=[height, 0], aspect=1)
         fig.savefig(outname, dpi=dpi, transparent=True)
         plt.close()
@@ -145,9 +147,14 @@ def rdiff( indata, dateinfo ):
 ###################################################################################
 
 
-def c2_process(fts_path, dst_path, rundiff=False, annotate_words=True):
+def c2_process(fts_path, dst_path, rundiff=False, annotate_words=True, batch_mode=False):
 
     os.makedirs(dst_path) if not os.path.isdir(dst_path) else None
+    dst_path_list = os.listdir(dst_path)
+    if not batch_mode:
+        for file in dst_path_list:
+            os.remove(dst_path + file)
+
     # Gather list of file names
     lasco_files = sorted(glob.glob('{}*.fts'.format(fts_path)))
     
@@ -177,7 +184,7 @@ def c2_process(fts_path, dst_path, rundiff=False, annotate_words=True):
         
         # Retrieve image date/time from header; store as datetime object
         dates_times.append( datetime.datetime.strptime( hdr['DATE-OBS']+' '+hdr['TIME-OBS'], '%Y/%m/%d %H:%M:%S.%f') )
-    print('Processing median subtraction...')
+    print('processing med_subtract...')
     # Call processing routine. Defaults to median subtraction.    
     if rundiff:
         _ = rdiff( data_cube, dates_times )

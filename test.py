@@ -395,7 +395,7 @@ def process_sequence(seq_full):
 
 
 def test(folder_in, output_file):
-    print('Calculate location...')
+    print('calculate location...')
     data_set = []
     # Scan folder for all sequences
     for (dirpath, dirnames, filenames) in os.walk(folder_in):
@@ -420,17 +420,19 @@ def test(folder_in, output_file):
             data_set.append(seq)
 
     for i, s in enumerate(data_set):
-        s["progress"] = "Completed!" + s["ID"] + " " + str(i + 1) + "/" + str(len(data_set))
+        s["progress"] = "Completed " + s["ID"] + " " + str(i + 1) + "/" + str(len(data_set))
 
     pool = multiprocessing.Pool()
     result_async = [pool.apply_async(process_sequence, args=(s,)) for s in data_set]
     results = [r.get() for r in result_async]
+    if os.path.exists(output_file):
+        os.remove(output_file)
     with open(output_file, 'w') as f:
         for r in results:
             if len(r) > 0:
                 f.writelines(r)
                 f.flush()
-    print('Calculate finished.')
+    print('calculate finish.')
 
 
 if __name__ == "__main__":
