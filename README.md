@@ -21,12 +21,12 @@ python main.py
 ```
 
 Note:
-Images should be put in ./data folder, and change main.py's line 132 - 134 accordingly.
+Line 20-39 should be configured before running the script.
 
 <br/>
 
 ## Credit
-The majority of the algorithm comes from Daniel Parrott (the author of Tycho Tracker),  <br />
+The majority of the detection algorithm comes from Daniel Parrott (the author of Tycho Tracker),  <br />
 which I have integrated and modified, and I would like to express my gratitude to Mr. Parrott.
 
 
